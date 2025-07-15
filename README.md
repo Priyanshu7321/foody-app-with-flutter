@@ -59,6 +59,3 @@ assets/         # Images and other assets
 2. Make your changes and test thoroughly.
 3. Submit a pull request.
 
-## Contact
-- Email: support@foody.com
-- Website: www.foody.com
