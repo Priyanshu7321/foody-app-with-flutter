@@ -43,10 +43,15 @@ dependencies:
   hive: ^2.2.3
   hive_flutter: ^1.1.0
   shared_preferences: ^2.2.2
+  liquido:
+    git:
+      url: https://github.com/renancaraujo/liquido.git
+      ref: main
 
   # The following adds the Cupertino Icons font to your application.
   # Use with the CupertinoIcons class for iOS style icons.
   cupertino_icons: ^1.0.8
+  liquid_glass_renderer: ^0.2.0-dev.4
 
 dev_dependencies:
   flutter_test:
@@ -74,7 +79,10 @@ flutter:
 
   # To add assets to your application, add an assets section, like this:
   assets:
-    - assets/
+    - assets/images/pizza.jpg
+    - assets/images/burger.jpg
+    - assets/images/sushi.jpg
+    - assets/images/pasta.jpg
 
   # An image asset can refer to one or more resolution-specific "variants", see
   # https://flutter.dev/to/resolution-aware-images

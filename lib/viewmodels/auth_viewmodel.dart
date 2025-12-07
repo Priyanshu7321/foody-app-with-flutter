@@ -1,6 +1,10 @@
+
+
 import 'package:flutter/cupertino.dart';
 import 'package:get/get.dart';
 import '../core/services/auth_service.dart';
+import 'dart:developer';
+
 
 class AuthViewModel extends GetxController {
   final AuthService _authService = Get.find<AuthService>();
@@ -80,6 +84,8 @@ class AuthViewModel extends GetxController {
   }
   
   Future<void> authenticate() async {
+
+    log("User authenticated", name: "AUTH");
     if (!_validateForm()) return;
     
     try {

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:foody/screens/components/LiquidBarExample.dart';
 import 'package:get/get.dart';
 import '../constants/app_colors.dart';
 import '../constants/text_styles.dart';
@@ -28,20 +29,22 @@ class _HomeScreenState extends State<HomeScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: AppColors.background,
-      body: SafeArea(
+      extendBody: true,
+      extendBodyBehindAppBar: true,
+      body: Stack(
+        children: [SafeArea(
         child: CustomScrollView(
           slivers: [
             // App Bar
             SliverAppBar(
-              backgroundColor: AppColors.surface,
+              backgroundColor: AppColors.categoryColors[4],
               elevation: 0,
               floating: true,
               pinned: true,
               expandedHeight: 120,
               flexibleSpace: FlexibleSpaceBar(
                 background: Container(
-                  color: AppColors.surface,
+                  color: AppColors.categoryColors[4],
                   child: Padding(
                     padding: ResponsiveHelper.getResponsivePadding(context),
                     child: Column(
@@ -139,7 +142,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Search Bar
             SliverToBoxAdapter(
               child: Container(
-                padding: ResponsiveHelper.getResponsivePadding(context),
+                padding: EdgeInsets.all(10),
                 child: GestureDetector(
                   onTap: () {
                     Get.toNamed(AppRoutes.search);
@@ -178,7 +181,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Categories
             SliverToBoxAdapter(
               child: Container(
-                padding: ResponsiveHelper.getResponsivePadding(context),
+                padding:EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -188,7 +191,7 @@ class _HomeScreenState extends State<HomeScreen> {
                     ),
                     const SizedBox(height: 16),
                     SizedBox(
-                      height: 100,
+                      height: 90,
                       child: ListView.builder(
                         scrollDirection: Axis.horizontal,
                         itemCount: 6,
@@ -205,7 +208,7 @@ class _HomeScreenState extends State<HomeScreen> {
                           final category = categories[index];
                           return Container(
                             width: 80,
-                            margin: const EdgeInsets.only(right: 16),
+                            margin: const EdgeInsets.only(right: 2),
                             child: Column(
                               children: [
                                 Container(
@@ -243,7 +246,7 @@ class _HomeScreenState extends State<HomeScreen> {
             // Popular Foods
             SliverToBoxAdapter(
               child: Container(
-                padding: ResponsiveHelper.getResponsivePadding(context),
+                padding: EdgeInsets.all(10),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
@@ -285,7 +288,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         physics: const NeverScrollableScrollPhysics(),
                         gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                           crossAxisCount: ResponsiveHelper.isMobile(context) ? 2 : 4,
-                          childAspectRatio: 0.8,
+                          childAspectRatio: 0.55,
                           crossAxisSpacing: 16,
                           mainAxisSpacing: 16,
                         ),
@@ -333,6 +336,7 @@ class _HomeScreenState extends State<HomeScreen> {
                         ),
                       ],
                     ),
+
                     const SizedBox(height: 16),
                     Obx(() {
                       final newFoods = _productViewModel.products
@@ -365,13 +369,21 @@ class _HomeScreenState extends State<HomeScreen> {
                 ),
               ),
             ),
-            
+
             // Bottom padding
             const SliverToBoxAdapter(
               child: SizedBox(height: 32),
             ),
           ],
         ),
+
+      ),
+          Positioned.fill(
+            child: Center(
+              child: BottomBar(currentIndex: 0, onTap: (t){}),
+            ),
+          ),
+      ],
       ),
     );
   }

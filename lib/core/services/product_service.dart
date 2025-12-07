@@ -225,7 +225,7 @@ class ProductService extends GetxService {
         price: 11.99,
         rating: 4.4,
         reviewCount: 67,
-        imageUrl: 'assets/images/salad.jpg',
+        imageUrl: 'assets/images/pizza.jpg',
         category: 'Salads',
         tags: ['Healthy', 'Vegetarian', 'Mediterranean'],
         isPopular: false,
